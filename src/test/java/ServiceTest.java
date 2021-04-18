@@ -1,7 +1,7 @@
-package com.bnp.controller.service;
-
 import com.bnp.controller.PersonDto;
-import com.bnp.controller.dao.Person;
+import com.bnp.dao.Person;
+import com.bnp.service.FirstService;
+import com.bnp.service.SecondService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +28,11 @@ public class ServiceTest {
         public FirstService firstService() {
             return new FirstService();
         }
+
+        @Bean
+        public SecondService secondService() {
+            return new SecondService();
+        }
     }
 
     private List<Person> personList;
@@ -36,7 +41,8 @@ public class ServiceTest {
     @Autowired
     FirstService firstService;
 
-
+    @Autowired
+    SecondService secondService;
 
     @Before
     public void init() {
@@ -61,5 +67,14 @@ public class ServiceTest {
         result.add(subList1);
         result.add(subList2);
         Assert.assertEquals(lists, result);
+    }
+
+    @Test
+    public void filterPersonList() {
+        List<Person> peoples = secondService.filterPersonListWithAge(personList);
+        peoples.forEach(person -> {
+            Assert.assertTrue(person.getAge() > 40);
+        });
+
     }
 }

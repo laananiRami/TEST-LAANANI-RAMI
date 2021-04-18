@@ -15,4 +15,6 @@ public interface TechniqueTest {
     public ResponseEntity splitLisOfPerson(@RequestBody @Valid PersonDto personDto);
 
 
+    @PostMapping("/save")
+    public ResponseEntity savePersonsList(@RequestBody @Valid PersonDto personList);
 }
