@@ -1,6 +1,6 @@
-package controller;
+package com.bnp.controller;
 
-import dao.Person;
+import com.bnp.dao.Person;
 
 import java.util.List;
 

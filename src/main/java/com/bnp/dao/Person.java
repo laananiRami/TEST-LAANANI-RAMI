@@ -1,4 +1,4 @@
-package dao;
+package com.bnp.dao;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

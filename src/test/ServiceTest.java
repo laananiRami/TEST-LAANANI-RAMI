@@ -1,7 +1,7 @@
-package service;
+package com.bnp.controller.service;
 
-import controller.PersonDto;
-import dao.Person;
+import com.bnp.controller.PersonDto;
+import com.bnp.controller.dao.Person;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

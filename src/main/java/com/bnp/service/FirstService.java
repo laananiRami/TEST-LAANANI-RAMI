@@ -1,11 +1,10 @@
-package service;
+package com.bnp.service;
 
-import controller.PersonDto;
-import dao.Person;
+import com.bnp.controller.PersonDto;
+import com.bnp.dao.Person;
 import org.apache.commons.collections4.ListUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
