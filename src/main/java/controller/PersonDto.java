@@ -8,7 +8,13 @@ public class PersonDto {
 
     List<Person> personList;
 
-    Integer sublistSize;
+    Integer subListSize;
+
+    public PersonDto(List<Person> personList, Integer subListSize) {
+
+        this.personList = personList;
+        this.subListSize = subListSize;
+    }
 
     public List<Person> getPersonList() {
         return personList;
@@ -19,10 +25,10 @@ public class PersonDto {
     }
 
     public Integer getSublistSize() {
-        return sublistSize;
+        return subListSize;
     }
 
-    public void setSublistSize(Integer sublistSize) {
-        this.sublistSize = sublistSize;
+    public void setSublistSize(Integer subListSize) {
+        this.subListSize = subListSize;
     }
 }
