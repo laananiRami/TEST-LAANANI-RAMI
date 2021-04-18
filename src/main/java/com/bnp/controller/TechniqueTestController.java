@@ -8,6 +8,7 @@ import com.bnp.service.FirstService;
 import com.bnp.service.SecondService;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 public class TechniqueTestController implements TechniqueTest {
@@ -28,11 +29,13 @@ public class TechniqueTestController implements TechniqueTest {
     }
 
     @Override
-    public ResponseEntity savePersonsList(@Valid PersonDto personList) {
+    public ResponseEntity savePersonsList(@Valid PersonDto personList) throws IOException {
 
         List<Person> filtredList = secondService.filterPersonListWithAge(personList.getPersonList());
 
         secondService.saveList(personList.getPersonList());
+
+        secondService.saveOnFile(filtredList);
         return null;
     }
 

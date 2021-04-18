@@ -11,6 +11,9 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,11 +49,11 @@ public class ServiceTest {
 
     @Before
     public void init() {
-        personList = new ArrayList<>(Arrays.asList(new Person("P1", "P2", 10),
-                new Person("P2", "P3", 25),
+        personList = new ArrayList<>(Arrays.asList(new Person("P4", "P5", 42),
+                new Person("P5", "P6", 80),
+                new Person("Raf", "Saf", 60),
                 new Person("P3", "P4", 50),
-                new Person("P4", "P5", 42),
-                new Person("P5", "P6", 80)));
+                new Person("P2", "P3", 25)));
         personDTOList = new PersonDto(personList, 3);
     }
 
@@ -76,5 +79,20 @@ public class ServiceTest {
             Assert.assertTrue(person.getAge() > 40);
         });
 
+    }
+
+
+    @Test
+    public void MustCreateFileSaveOnFile() throws IOException {
+        secondService.saveOnFile(personDTOList.getPersonList());
+
+        String result;
+
+        BufferedReader reader = new BufferedReader(new FileReader("ListOfPerson.txt"));
+        result = reader.readLine();
+        reader.close();
+
+        Assert.assertNotNull(result);
+        Assert.assertNotNull(result.contains("P1, P2, 10"));
     }
 }
